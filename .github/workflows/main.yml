@@ -1,9 +1,20 @@
-  steps:
-  - uses: msys2/setup-msys2@v2
-    with:
-      update: true
-      install: >-
-        curl
-        git
-        mingw-w64
-  - uses: actions/checkout@v4
+name: MSYS2
+on: [push, pull_request]
+
+jobs:
+  msys2-ucrt64:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: msys2/setup-msys2@v2
+        with:
+          msystem: MINGW64
+          update: true
+          install: git mingw-w64-x86_64-gcc mingw-w64-x84_64-make
+      - name: CI-Build
+        run: |
+          echo 'Running in MSYS2!'
+          ./ci-build.sh
