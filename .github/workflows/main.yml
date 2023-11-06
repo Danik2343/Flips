@@ -17,4 +17,5 @@ jobs:
       - name: CI-Build
         run: |
           echo 'Running in MSYS2!'
-          ./ci-build.sh
+          git clone https://github.com/Alcaro/Flips
+          mingw32-make CFLAGS=-O3
