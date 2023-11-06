@@ -2,7 +2,7 @@ name: MSYS2
 on: [push, pull_request]
 
 jobs:
-  msys2-ucrt64:
+  msys2-mingw64:
     runs-on: windows-latest
     defaults:
       run:
@@ -13,7 +13,7 @@ jobs:
         with:
           msystem: MINGW64
           update: true
-          install: git mingw-w64-x86_64-gcc mingw-w64-x84_64-make
+          install: git mingw-w64-x86_64-gcc make
       - name: CI-Build
         run: |
           echo 'Running in MSYS2!'
