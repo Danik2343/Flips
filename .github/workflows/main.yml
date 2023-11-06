@@ -1,0 +1,12 @@
+ defaults:
+    run:
+      shell: msys2 {0}
+  steps:
+  - uses: msys2/setup-msys2@v2
+    with:
+      update: true
+      install: >-
+        curl
+        git
+        mingw-w64
+  - uses: actions/checkout@v4
